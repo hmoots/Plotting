@@ -1,0 +1,22 @@
+# Creating a vectorized output for your plots
+# Code based on https://nalinan.medium.com/how-to-vectorize-plots-from-r-in-powerpoint-bad7c238e86a
+# Which was inspired by https://x.com/leonardojo/status/1828773827134062967
+
+# Install necessary packages if not already installed
+install.packages("svglite")
+install.packages("ggplot2")
+
+# Load the ggplot2 library
+library(svglite)
+library(ggplot2)
+
+# Example below, your own ggplot script will replace this
+# Create a basic boxplot of Sepal Length by Species (Replace with PCA code
+p <- ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +  
+  geom_boxplot() +  
+  labs(title = "Sepal Length", y = "Sepal Length", x = "Species")
+
+# Save the plot as an SVG file
+ggsave("sepal.svg", p, device = "svg")
+
+# Can be edited in your prefered graphics applications, such as Affinity Designer
